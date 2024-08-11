@@ -14,6 +14,10 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
+@app.route('/')
+def home_page():
+    return '<h1>Welcome to the Backend API.....</h1>'
+
 @app.route('/messages', methods=['GET', 'POST'])
 def messages():
     if request.method == 'GET':
@@ -70,4 +74,4 @@ def messages_by_id(id):
     return response
 
 if __name__ == "__main__":
-    app.run(port=5555)
+    app.run(port=5555, debug=True)
